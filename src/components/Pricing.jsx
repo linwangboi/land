@@ -96,33 +96,55 @@ export default function Pricing() {
 
               <div className="text-center mb-6 sm:mb-8">
                 <h3 className="text-xl sm:text-2xl font-bold mb-2">
-                    {plan.name}
+                  {plan.name}
                 </h3>
-                <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">{plan.description}</p>
+                <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
+                  {plan.description}
+                </p>
                 <div className="flex items-baseline justify-center">
-                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">${plan.price}</span>
-                  <span className="text-gray-400 ml-1 sm:ml-2 text-sm sm:text-base">/month</span>
+                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    ${plan.price}
+                  </span>
+                  <span className="text-gray-400 ml-1 sm:ml-2 text-sm sm:text-base">
+                    /month
+                  </span>
                 </div>
               </div>
               {/*Start here */}
-              <ul>
+              <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-row">
                 {plan.features.map((feature, featureKey) => (
-                  <li>
-                    <div>
-                      <Check />
+                  <li
+                    key={featureKey}
+                    className="flex items-start space-x-2 sm:space-x-3"
+                  >
+                    <div className="flex-shrink-0 size-4 sm:size-5 rounded-full bg-blue-500/20 flex items-center justify-center mt-0.5">
+                      <Check className="size-2.5 sm:size-3 text-blue-400" />
                     </div>
-                    <span>{feature}</span>
+                    <span className="text-gray-300 text-sm sm:text-base">
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
 
-              <button>Get Started</button>
+              <button
+                className={`w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold transition-all duration-300 mt-auto hover:scale-102 cursor-pointer text-sm sm:text-base ${
+                  plan.mostPopular
+                    ? "bg-linear-to-b from-blue-500 to-cyan-500"
+                    : "bg-white/5 border border-white/10 hover:bg-white/10"
+                }`}
+              >
+                Get Started
+              </button>
             </div>
           ))}
         </div>
-        <div>
-          <p>
-            Need a custom plan? <a href="#">Contact our sales team</a>
+        <div className="mt-8 sm:mt-12 text-center">
+          <p className="text-gray-400 text-base">
+            Need a custom plan?{" "}
+            <a href="#" className="text-blue-400 hover:text-blue-300">
+              Contact our sales team
+            </a>
           </p>
         </div>
       </div>
